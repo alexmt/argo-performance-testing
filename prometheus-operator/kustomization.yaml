@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- upstream/upstream.yaml
+- argocd-metrics-servicemonitor.yaml
+- argocd-repo-server-metrics-servicemonitor.yaml
+- argocd-server-metrics-servicemonitor.yaml
+
+patchesStrategicMerge:
+- grafana-service-patch.yaml
+
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    grafana_dashboard: argocd
+
+configMapGenerator:
+- name: argocd-dashboard-cm
+  files:
+    - dashboard.json

@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  url: https://cd-performance.apps.argoproj.io
+  dex.config: |
+    connectors:
+    - type: github
+      id: github
+      name: GitHub
+      config:
+        clientID: b8b5373b3a66d1cf837e
+        clientSecret: $dex.github.clientSecret
+        orgs:
+        - name: argoproj
+          teams:
+          - argo-cd-admins
+kind: ConfigMap
+metadata:
+  name: argocd-cm

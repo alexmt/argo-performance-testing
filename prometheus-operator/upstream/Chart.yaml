@@ -1,0 +1,8 @@
+apiVersion: v2
+name: prometheus-operator
+version: 0.1.0
+
+dependencies:
+- name: kube-prometheus-stack
+  version: 23.3.2
+  repository: https://prometheus-community.github.io/helm-charts
