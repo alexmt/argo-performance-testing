@@ -16,7 +16,7 @@ metadata:
   namespace: argocd
 rules:
   - apiGroups: ["apps", "extensions"]
-    resources: ["deployments", "statefulset"]
+    resources: ["deployments", "statefulsets"]
     resourceNames: ["argocd-server", "argocd-application-controller", "argocd-repo-server"]
     verbs: ["get", "patch", "list", "watch"] # "list" and "watch" are only needed
     # if you want to use `rollout status`
