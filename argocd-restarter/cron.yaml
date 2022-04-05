@@ -19,10 +19,24 @@ spec:
           # account configured above
           restartPolicy: Never
           containers:
-            - name: kubectl
+            - name: argocd
               image: bitnami/kubectl
               command:
                 - 'kubectl'
                 - 'rollout'
                 - 'restart'
                 - 'deployment/argocd-server'
+            - name: controller
+              image: bitnami/kubectl
+              command:
+                - 'kubectl'
+                - 'rollout'
+                - 'restart'
+                - 'statefulset/argocd-application-controller'
+            - name: repo-server
+              image: bitnami/kubectl
+              command:
+                - 'kubectl'
+                - 'rollout'
+                - 'restart'
+                - 'deployment/argocd-repo-server'
