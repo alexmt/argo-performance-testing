@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: deployment-restart
+  namespace: argocd
+spec:
+  concurrencyPolicy: Forbid
+  schedule: '0 8 * * *' # cron spec of time, here, 8 o'clock
+  jobTemplate:
+    spec:
+      backoffLimit: 2 # this has very low chance of failing, as all this does
+        # is prompt kubernetes to schedule new replica set for
+      # the deployment
+      activeDeadlineSeconds: 600 # timeout, makes most sense with
+      # "waiting for rollout" variant specified below
+      template:
+        spec:
+          serviceAccountName: deployment-restart # name of the service
+          # account configured above
+          restartPolicy: Never
+          containers:
+            - name: kubectl
+              image: bitnami/kubectl
+              command:
+                - 'kubectl'
+                - 'rollout'
+                - 'restart'
+                - 'deployment/argocd-server'
