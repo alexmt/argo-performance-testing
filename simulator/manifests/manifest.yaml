@@ -25,3 +25,5 @@ spec:
                   name: argocd-initial-admin-secret
                   key: password
                   optional: false
+            - name: THREADS
+              value: 5
