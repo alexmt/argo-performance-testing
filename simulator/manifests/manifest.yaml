@@ -19,7 +19,7 @@ spec:
           env:
             - name: HOST
               value: https://adbb4ecc1ac6c48369d68e8a2d90b526-2082982198.us-east-1.elb.amazonaws.com
-            - name: SECRET_USERNAME
+            - name: PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: argocd-initial-admin-secret
