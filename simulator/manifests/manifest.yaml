@@ -16,3 +16,12 @@ spec:
       containers:
         - image: docker.io/pashacodefresh/argocd-simulator
           name: simulator
+          env:
+            - name: HOST
+              value: https://argocd-server:443
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: argocd-initial-admin-secret
+                  key: password
+                  optional: false
