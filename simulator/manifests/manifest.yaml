@@ -18,7 +18,7 @@ spec:
           name: simulator
           env:
             - name: HOST
-              value: http://adbb4ecc1ac6c48369d68e8a2d90b526-2082982198.us-east-1.elb.amazonaws.com
+              value: https://adbb4ecc1ac6c48369d68e8a2d90b526-2082982198.us-east-1.elb.amazonaws.com
             - name: SECRET_USERNAME
               valueFrom:
                 secretKeyRef:
