@@ -26,4 +26,4 @@ spec:
                   key: password
                   optional: false
             - name: THREADS
-              value: "50"
+              value: "110"
